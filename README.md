@@ -7,3 +7,10 @@ Essa Dashboard utiliza as seguintes tecnologias:
 - ChakraUI
 - Typescript
 
+## Conceitos
+
+- Interface Declarativa;
+- Responsividade;
+- Componentização;
+- Formulários;
+- React Hook;
