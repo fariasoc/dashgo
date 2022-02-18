@@ -1,15 +1,15 @@
 import { useDisclosure, UseDisclosureReturn } from "@chakra-ui/react";
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
-interface SideDrawerProviderProps {
+interface SidebarDrawerProviderProps {
   children: ReactNode;
 }
 
-type SideDrawerContextData = UseDisclosureReturn
+type SidebarDrawerContextData = UseDisclosureReturn
 
-const SidebarDrawerContext = createContext({} as SideDrawerContextData );
+const SidebarDrawerContext = createContext({} as SidebarDrawerContextData );
 
-export function SideDrawerProvider({ children  }: SideDrawerProviderProps){
+export function SidebarDrawerProvider({ children  }: SidebarDrawerProviderProps){
 
   const disclosure = useDisclosure()
 
@@ -19,3 +19,5 @@ export function SideDrawerProvider({ children  }: SideDrawerProviderProps){
       </SidebarDrawerContext.Provider>
   )
 }
+
+export const useSidebarDrawer = () => useContext(SidebarDrawerContext)
