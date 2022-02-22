@@ -14,3 +14,4 @@ Essa Dashboard utiliza as seguintes tecnologias:
 - Componentização;
 - Formulários;
 - React Hook;
+- MirageJS
