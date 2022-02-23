@@ -3,6 +3,7 @@ import faker from 'faker'
 
 
 //faker@5.5.2
+// react-query@3.13.4
 
 
 type User = {
