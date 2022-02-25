@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Heading, Icon, Table, Tbody, Td, Th, Thead, Tr, Text, useBreakpointValue, Spinner } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Pagination } from "../../components/Pagination";
 import { useQuery } from 'react-query';
@@ -9,13 +9,11 @@ import { useEffect } from "react";
 
 export default function UserList() {
 
-  const query = useQuery('users', async () => {
-   const response = await fetch('http://localhost:3000/api/users')
-   const data = await response.json()
-   return data
+  const { data, isLoading, error } = useQuery('users', async () => {
+    const response = await fetch('http://localhost:3000/api/users')
+    const data = await response.json()
+    return data
   })
-
-  console.log(query)
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -31,7 +29,7 @@ export default function UserList() {
 
   return (
     <Box>
-      <Header/>
+      <Header />
 
       <Flex
         w="100%"
@@ -49,95 +47,113 @@ export default function UserList() {
             </Heading>
 
             <Link href="/users/create" passHref>
-            
 
-            <Button 
-              as="a" 
-              size="sm" 
-              fontSize="sm" 
-              colorScheme="pink" 
-              leftIcon={<Icon as={RiAddLine} fontSize="20"  />} 
-            >
-              Usuário
-            </Button>
+
+              <Button
+                as="a"
+                size="sm"
+                fontSize="sm"
+                colorScheme="pink"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              >
+                Usuário
+              </Button>
             </Link>
           </Flex>
 
+      
+          { isLoading ? (
+            <Flex justify="center"> 
+              <Spinner/>
+            </Flex>
+          ) : error ? (
+            <Flex justify="center">
+                <Text> Falha ao obter dados dos usuários </Text>
+            </Flex>
+
+          ) : (
+<>
           <Table colorScheme="whiteAlpha" >
             <Thead>
               <Tr>
-                <Th px={["4","4", "6"]} color="gray.300" width="8" >
+                <Th px={["4", "4", "6"]} color="gray.300" width="8" >
                   <Checkbox colorScheme="pink" />
                 </Th>
                 <Th> Usuário </Th>
-                { isWideVersion && <Th> Data de cadastro </Th> } 
-                
+                {isWideVersion && <Th> Data de cadastro </Th>}
+
               </Tr>
-              </Thead>
+            </Thead>
 
-                <Tbody>
-                  <Tr>
-                    <Td px={["4","4", "6"]} >
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold" > Celso Farias </Text>
-                        <Text fontSize="sm" color="gray.300" > fariasoc@outlook.com </Text>
-                      </Box>
-                    </Td>
+            <Tbody>
+              <Tr>
+                <Td px={["4", "4", "6"]} >
+                  <Checkbox colorScheme="pink" />
+                </Td>
+                <Td>
+                  <Box>
+                    <Text fontWeight="bold" > Celso Farias </Text>
+                    <Text fontSize="sm" color="gray.300" > fariasoc@outlook.com </Text>
+                  </Box>
+                </Td>
 
-                    { isWideVersion && <Td> 04 de Abril, 2021 </Td>}
-
-
-                  </Tr>
-
-                  <Tr>
-                    <Td >
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold" > Celso Farias </Text>
-                        <Text fontSize="sm" color="gray.300" > fariasoc@outlook.com </Text>
-                      </Box>
-                    </Td>
-
-                    { isWideVersion && <Td> 04 de Abril, 2021 </Td>}
+                {isWideVersion && <Td> 04 de Abril, 2021 </Td>}
 
 
-                  </Tr>
+              </Tr>
+
+              <Tr>
+                <Td >
+                  <Checkbox colorScheme="pink" />
+                </Td>
+                <Td>
+                  <Box>
+                    <Text fontWeight="bold" > Celso Farias </Text>
+                    <Text fontSize="sm" color="gray.300" > fariasoc@outlook.com </Text>
+                  </Box>
+                </Td>
+
+                {isWideVersion && <Td> 04 de Abril, 2021 </Td>}
+
+
+              </Tr>
 
 
 
-                  <Tr>
-                    <Td px={["4","4", "6"]} >
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold" > Celso Farias </Text>
-                        <Text fontSize="sm" color="gray.300" > fariasoc@outlook.com </Text>
-                      </Box>
-                    </Td>
+              <Tr>
+                <Td px={["4", "4", "6"]} >
+                  <Checkbox colorScheme="pink" />
+                </Td>
+                <Td>
+                  <Box>
+                    <Text fontWeight="bold" > Celso Farias </Text>
+                    <Text fontSize="sm" color="gray.300" > fariasoc@outlook.com </Text>
+                  </Box>
+                </Td>
 
-                    { isWideVersion && <Td> 04 de Abril, 2021 </Td>}
-
-
-                  </Tr>
+                {isWideVersion && <Td> 04 de Abril, 2021 </Td>}
 
 
-                  
-                </Tbody>
-          
-       
-          </Table>
+              </Tr>
 
-          <Pagination/>
 
-        </Box>
 
-      </Flex>
-    </Box>
+            </Tbody>
+
+
+          </Table >
+
+    <Pagination />
+</>
+
+          )
+}
+
+
+
+        </Box >
+
+      </Flex >
+    </Box >
   );
 }
