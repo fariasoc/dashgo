@@ -1,10 +1,15 @@
-import { createServer, Factory, Model, Response } from 'miragejs'
+import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs'
 import faker from 'faker'
 
 
 //faker@5.5.2
 // react-query@3.13.4
 
+//users
+//address
+
+//address
+// { name: "Celso", address: { street: ""}  ,email:"..." }
 
 type User = {
   name: string
@@ -14,6 +19,11 @@ type User = {
 
 export function makeServer(){ 
   const server = createServer({
+
+    serializers: {
+      application: ActiveModelSerializer,
+    },
+
     models: {
       user: Model.extend<Partial<User>>({})
     },
