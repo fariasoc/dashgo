@@ -9,6 +9,7 @@ import { useState } from "react";
 
 import { queryClient } from "../../services/queryClient";
 import { api } from "../../services/api";
+import { GetServerSideProps } from "next";
 
 
 export default function UserList() {
@@ -149,4 +150,12 @@ export default function UserList() {
       </Flex >
     </Box >
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      
+    }
+  }
 }
