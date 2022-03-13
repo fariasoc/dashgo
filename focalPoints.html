@@ -691,6 +691,25 @@
 
   <p>  yarn add jwt-decode </p>
 
+  <section> <h1> Performance </h1>  </section>
+  <section> Renderizações no React </section>
+
+  <ul>
+    <li> Renderização de pai para filho </li>
+    <li> Propriedade </li>
+    <li> Hooks (useState, useContext, useReducer) </li>
+  </ul>
+
+  <strong> Fluxo de renderização </strong>
+
+  <p> 1º Gerar uma nova versão do componente que precisa ser renderizado; </p>
+  <p> 2º Comparar essa nova versão com a versão anterior já salva na página; </p>
+  <p> <b> 3º Se houverem alterações </b>, o React "renderiza" essa nova versão em tela; </p>
+
+  <p> O React utiliza o algoritmo de Reconciliação e Diferenciação "Diffing" </p>
+
+  <a href="pt-br.reactjs.org/docs/reconciliation.html"></a>
+
 </body>
 
 </html>
