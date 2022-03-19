@@ -710,6 +710,64 @@
 
   <a href="pt-br.reactjs.org/docs/reconciliation.html"></a>
 
+  <p> yarn add json-server -D </p>
+
+
+  <section>Fluxo de renderização no React</section>
+
+  <p>01 - Criar uma nova versão do componente</p>
+  <p>02 - Comparar com a versão anterior</p>
+  <p>03 - Se houverem alterações, vai atualizar o que alterou </p>
+
+  <p>Shallow Compare -> Comparação Rasa</p>
+
+  <p> {} === { } -> False <br> Igualdade referencial </p>
+
+  <strong> Em quais situações devemos utilizar o Memo? </strong>
+
+  <p> 01 - Pure Functional Components: Paradigma da programação funcional  </p>
+
+  <p> 02 - Renders too often: Componentes que são renderizados inúmeras vezes </p>
+
+  <p> 03 - Re-renders with same props: Renderização de um componente com as mesmas propriedades </p>
+
+  <p> 04 - Componentes médios e grandes  </p>
+
+  <p> Funções pura: Com a inserção dos mesmos parâmetros, o resultado será sempre o mesmo </p>
+
+  <section> useMemo e useCallback </section>
+
+  <p>useMemo: Quando queremos memorizar um "valor" <br> Evitar que alguma coisa que ocupa muito processamento seja refeito sempre que um componente seja renderizado </p>
+
+  <p> O useMemo deve ser utilizado para <b> Cálculos pesados </b> e <b> igualdade referencial, quando repassamos uma informação para um componente filho </b> </p>
+  <p> Igualdade referencial: Quando duas variáveis ocupam o mesmo lugar na memória</p>
+
+  <p>useCallback: Quando queremos memorizar uma função </p>
+
+  <p> Code Splitting </p>
+
+  <p> yarn add react-virtualized </p>
+
+  <p> yarn add @types/react-virtualized -D </p>
+
+  <p> yarn add lodash + yarn add @types/lodash -D </p>
+
+  <p> yarn add @next/bundle-analyzer </p>
+
+  <p> yarn add cross-env -D </p>
+
+  <section> Testes no Front-end </section>
+  <ul>
+    <li> Teste unitário: Teste de um componente de forma isolada da aplicação | Geralmente o teste unitário irá testar uma função </li>
+    <li> Teste de integração: Teste de funcionalidades das funções </li>
+    <li> Teste E2E Ponta a Ponta: Simulação da utilização de um usuário </li>
+  </ul>
+
+  <p> yarn add jest jest-dom @testing-library/jest-dom @testing-library/dom @testing-library/react babel-jest -D </p>
+
+
+
 </body>
+
 
 </html>
